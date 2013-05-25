@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetSocietes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSocietesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSocietesResult" type="tns:ArrayOfSociete" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSociete">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Societe" nillable="true" type="tns:Societe" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Societe">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomCommercial" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLesProjets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codeSociete" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLesProjetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLesProjetsResult" type="tns:ArrayOfProjet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProjet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Projet" nillable="true" type="tns:Projet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Projet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodeSociete" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLesFamilles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLesFamillesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLesFamillesResult" type="tns:ArrayOfFamille" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFamille">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Famille" nillable="true" type="tns:Famille" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Famille">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Libelle" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLesMetiers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codeFamille" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLesMetiersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLesMetiersResult" type="tns:ArrayOfMetier" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMetier">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Metier" nillable="true" type="tns:Metier" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Metier">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Libelle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mission" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdFamille" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLesCollaborateurs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codeMetier" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLesCollaborateursResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLesCollaborateursResult" type="tns:ArrayOfCollaborateur" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCollaborateur">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Collaborateur" nillable="true" type="tns:Collaborateur" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Collaborateur">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Matricule" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prenom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NatureContrat" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateEmbauche" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="NombreJoursConges" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NombreJoursPris" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Affectations" type="tns:ArrayOfAffectation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAffectation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Affectation" nillable="true" type="tns:Affectation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Affectation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Rang" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MatriculeCollaborateur" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdMetier" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateDebut" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateFin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdProjet" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeCollaborateur" type="tns:Collaborateur" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeMetier" type="tns:Metier" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeProjet" type="tns:Projet" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsererAffectation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="matriculeCollaborateur" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idMetier" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateDebut" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateFin" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="idProjet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsererAffectationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsererAffectationResult" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAffectations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idProjet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAffectationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAffectationsResult" type="tns:ArrayOfAffectation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCollabProjet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idProjet" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCollabProjetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCollabProjetResult" type="tns:ArrayOfCollaborateur" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifierAffectation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="matriculeCollaborateur" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idProjet" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="rang" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateDebutModif" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateFinModif" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifierAffectationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModifierAffectationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SupprimerAffectation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="matriculeCollaborateur" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idProjet" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="rang" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SupprimerAffectationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SupprimerAffectationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreerProjet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="unNom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unCodeSociete" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreerProjetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreerProjetResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAffectationsCollab">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="matriculeCollaborateur" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAffectationsCollabResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAffectationsCollabResult" type="tns:ArrayOfAffectation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCollaborateursAffectesProjet">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCollaborateursAffectesProjetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCollaborateursAffectesProjetResult" type="tns:ArrayOfCollaborateur" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChefsDeProjet">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetChefsDeProjetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChefsDeProjetResult" type="tns:ArrayOfCollaborateur" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSocietesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSocietes" />
+  </wsdl:message>
+  <wsdl:message name="GetSocietesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSocietesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLesProjetsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLesProjets" />
+  </wsdl:message>
+  <wsdl:message name="GetLesProjetsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLesProjetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLesFamillesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLesFamilles" />
+  </wsdl:message>
+  <wsdl:message name="GetLesFamillesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLesFamillesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLesMetiersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLesMetiers" />
+  </wsdl:message>
+  <wsdl:message name="GetLesMetiersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLesMetiersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLesCollaborateursSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLesCollaborateurs" />
+  </wsdl:message>
+  <wsdl:message name="GetLesCollaborateursSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLesCollaborateursResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsererAffectationSoapIn">
+    <wsdl:part name="parameters" element="tns:InsererAffectation" />
+  </wsdl:message>
+  <wsdl:message name="InsererAffectationSoapOut">
+    <wsdl:part name="parameters" element="tns:InsererAffectationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAffectationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAffectations" />
+  </wsdl:message>
+  <wsdl:message name="GetAffectationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAffectationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCollabProjetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCollabProjet" />
+  </wsdl:message>
+  <wsdl:message name="GetCollabProjetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCollabProjetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifierAffectationSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifierAffectation" />
+  </wsdl:message>
+  <wsdl:message name="ModifierAffectationSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifierAffectationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SupprimerAffectationSoapIn">
+    <wsdl:part name="parameters" element="tns:SupprimerAffectation" />
+  </wsdl:message>
+  <wsdl:message name="SupprimerAffectationSoapOut">
+    <wsdl:part name="parameters" element="tns:SupprimerAffectationResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreerProjetSoapIn">
+    <wsdl:part name="parameters" element="tns:CreerProjet" />
+  </wsdl:message>
+  <wsdl:message name="CreerProjetSoapOut">
+    <wsdl:part name="parameters" element="tns:CreerProjetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAffectationsCollabSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAffectationsCollab" />
+  </wsdl:message>
+  <wsdl:message name="GetAffectationsCollabSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAffectationsCollabResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCollaborateursAffectesProjetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCollaborateursAffectesProjet" />
+  </wsdl:message>
+  <wsdl:message name="GetCollaborateursAffectesProjetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCollaborateursAffectesProjetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChefsDeProjetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChefsDeProjet" />
+  </wsdl:message>
+  <wsdl:message name="GetChefsDeProjetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChefsDeProjetResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WsGestionAffectationsSoap">
+    <wsdl:operation name="GetSocietes">
+      <wsdl:input message="tns:GetSocietesSoapIn" />
+      <wsdl:output message="tns:GetSocietesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLesProjets">
+      <wsdl:input message="tns:GetLesProjetsSoapIn" />
+      <wsdl:output message="tns:GetLesProjetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLesFamilles">
+      <wsdl:input message="tns:GetLesFamillesSoapIn" />
+      <wsdl:output message="tns:GetLesFamillesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLesMetiers">
+      <wsdl:input message="tns:GetLesMetiersSoapIn" />
+      <wsdl:output message="tns:GetLesMetiersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLesCollaborateurs">
+      <wsdl:input message="tns:GetLesCollaborateursSoapIn" />
+      <wsdl:output message="tns:GetLesCollaborateursSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsererAffectation">
+      <wsdl:input message="tns:InsererAffectationSoapIn" />
+      <wsdl:output message="tns:InsererAffectationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffectations">
+      <wsdl:input message="tns:GetAffectationsSoapIn" />
+      <wsdl:output message="tns:GetAffectationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCollabProjet">
+      <wsdl:input message="tns:GetCollabProjetSoapIn" />
+      <wsdl:output message="tns:GetCollabProjetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifierAffectation">
+      <wsdl:input message="tns:ModifierAffectationSoapIn" />
+      <wsdl:output message="tns:ModifierAffectationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SupprimerAffectation">
+      <wsdl:input message="tns:SupprimerAffectationSoapIn" />
+      <wsdl:output message="tns:SupprimerAffectationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreerProjet">
+      <wsdl:input message="tns:CreerProjetSoapIn" />
+      <wsdl:output message="tns:CreerProjetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAffectationsCollab">
+      <wsdl:input message="tns:GetAffectationsCollabSoapIn" />
+      <wsdl:output message="tns:GetAffectationsCollabSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCollaborateursAffectesProjet">
+      <wsdl:input message="tns:GetCollaborateursAffectesProjetSoapIn" />
+      <wsdl:output message="tns:GetCollaborateursAffectesProjetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChefsDeProjet">
+      <wsdl:input message="tns:GetChefsDeProjetSoapIn" />
+      <wsdl:output message="tns:GetChefsDeProjetSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsGestionAffectationsSoap" type="tns:WsGestionAffectationsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSocietes">
+      <soap:operation soapAction="http://tempuri.org/GetSocietes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesProjets">
+      <soap:operation soapAction="http://tempuri.org/GetLesProjets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesFamilles">
+      <soap:operation soapAction="http://tempuri.org/GetLesFamilles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesMetiers">
+      <soap:operation soapAction="http://tempuri.org/GetLesMetiers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesCollaborateurs">
+      <soap:operation soapAction="http://tempuri.org/GetLesCollaborateurs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsererAffectation">
+      <soap:operation soapAction="http://tempuri.org/InsererAffectation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffectations">
+      <soap:operation soapAction="http://tempuri.org/GetAffectations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCollabProjet">
+      <soap:operation soapAction="http://tempuri.org/GetCollabProjet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifierAffectation">
+      <soap:operation soapAction="http://tempuri.org/ModifierAffectation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupprimerAffectation">
+      <soap:operation soapAction="http://tempuri.org/SupprimerAffectation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreerProjet">
+      <soap:operation soapAction="http://tempuri.org/CreerProjet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffectationsCollab">
+      <soap:operation soapAction="http://tempuri.org/GetAffectationsCollab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCollaborateursAffectesProjet">
+      <soap:operation soapAction="http://tempuri.org/GetCollaborateursAffectesProjet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChefsDeProjet">
+      <soap:operation soapAction="http://tempuri.org/GetChefsDeProjet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WsGestionAffectationsSoap12" type="tns:WsGestionAffectationsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSocietes">
+      <soap12:operation soapAction="http://tempuri.org/GetSocietes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesProjets">
+      <soap12:operation soapAction="http://tempuri.org/GetLesProjets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesFamilles">
+      <soap12:operation soapAction="http://tempuri.org/GetLesFamilles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesMetiers">
+      <soap12:operation soapAction="http://tempuri.org/GetLesMetiers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLesCollaborateurs">
+      <soap12:operation soapAction="http://tempuri.org/GetLesCollaborateurs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsererAffectation">
+      <soap12:operation soapAction="http://tempuri.org/InsererAffectation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffectations">
+      <soap12:operation soapAction="http://tempuri.org/GetAffectations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCollabProjet">
+      <soap12:operation soapAction="http://tempuri.org/GetCollabProjet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifierAffectation">
+      <soap12:operation soapAction="http://tempuri.org/ModifierAffectation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupprimerAffectation">
+      <soap12:operation soapAction="http://tempuri.org/SupprimerAffectation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreerProjet">
+      <soap12:operation soapAction="http://tempuri.org/CreerProjet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAffectationsCollab">
+      <soap12:operation soapAction="http://tempuri.org/GetAffectationsCollab" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCollaborateursAffectesProjet">
+      <soap12:operation soapAction="http://tempuri.org/GetCollaborateursAffectesProjet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChefsDeProjet">
+      <soap12:operation soapAction="http://tempuri.org/GetChefsDeProjet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsGestionAffectations">
+    <wsdl:port name="WsGestionAffectationsSoap" binding="tns:WsGestionAffectationsSoap">
+      <soap:address location="http://localhost:2773/WsGestionAffectations.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WsGestionAffectationsSoap12" binding="tns:WsGestionAffectationsSoap12">
+      <soap12:address location="http://localhost:2773/WsGestionAffectations.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

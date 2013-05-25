@@ -1,0 +1,74 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Planning.Page1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    shell:SystemTray.IsVisible="True"
+    xmlns:wpControls="clr-namespace:WPControls;assembly=WPControls" Loaded="PhoneApplicationPage_Loaded">
+    <phone:PhoneApplicationPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lst" TargetType="ListBox">
+                <Setter Property="Background" Value="#FF4B4B4B"/>
+                <Setter Property="Height" Value="150"/>
+                <Setter Property="Width" Value="412"/>
+                <Setter Property="Foreground" Value="#FFFF8900"/>
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="BorderBrush" Value="#FF00CAF8"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+            </Style>
+
+            <Style x:Key="txt" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+            </Style>
+        </ResourceDictionary>
+    </phone:PhoneApplicationPage.Resources>
+    <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contient le nom de l'application et le titre de la page-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="SSII 21" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Calibri" Foreground="#FF00CAF8" />
+            <TextBlock x:Name="Title" Text="Mes projets" FontSize="60" FontFamily="Calibri" Foreground="#FF00CAF8"></TextBlock>
+        </StackPanel>
+
+        <!--ContentPanel - placez tout contenu supplémentaire ici-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,12">
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Foreground="#FF00CAF8" Text="A partir du" Margin="12,0,0,0" />
+            <toolkit:DatePicker x:Name="dtp" Margin="-6,21,0,521" HorizontalAlignment="Left" Width="462" FontFamily="Calibri" FontSize="26" Background="#FF4B4B4B" Foreground="#FFFF8900" ValueChanged="dtp_ValueChanged" />
+            <ListBox Height="171" HorizontalAlignment="Left" Margin="6,97,0,0" Name="lstConsultation" Style="{StaticResource ResourceKey=lst}"  VerticalAlignment="Top" Width="444" SelectionChanged="lstConsultation_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource ResourceKey=txt}" Text="{Binding Projet}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                </ListBox>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="12,311,0,0" Name="dateDebut" Text="Date de début" Foreground="#FF00CAF8" />
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="12,363,0,0" Name="dateFin" Text="Date de fin" Foreground="#FF00CAF8"/>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="12,416,0,0" Name="societe" Text="Société" Foreground="#FF00CAF8"/>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="12,469,0,0" Name="metier" Text="Métier" Foreground="#FF00CAF8"/>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="195,311,0,0" Name="tbDateDeb" Text="" Width="228" Foreground="#FFFF8900"/>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="195,363,0,0" Name="tbDateFin" Text="" Width="228" Foreground="#FFFF8900"/>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="195,416,0,0" Name="tbSociete" Text="" Width="228" Foreground="#FFFF8900"/>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Margin="195,469,0,0" Name="tbMetier" Text="" Width="228" Foreground="#FFFF8900" TextWrapping="Wrap" Height="97" />
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>

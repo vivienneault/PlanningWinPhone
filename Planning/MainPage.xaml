@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Planning.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+    <phone:PhoneApplicationPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="lst" TargetType="ListBox">
+                <Setter Property="Background" Value="#FF4B4B4B"/>
+                <Setter Property="Height" Value="150"/>
+                <Setter Property="Width" Value="412"/>
+                <Setter Property="Foreground" Value="#FFFF8900"/>
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="BorderBrush" Value="#FF00CAF8"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+            </Style>
+
+            <Style x:Key="txt" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+            </Style>
+        </ResourceDictionary>
+    </phone:PhoneApplicationPage.Resources>
+        <!--LayoutRoot est la grille racine où tout le contenu de la page est placé-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contient le nom de l'application et le titre de la page-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="SSII 21" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FF00CAF8" />
+            <TextBlock x:Name="PageTitle" Text="Planning" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FF00CAF8" />
+        </StackPanel>
+
+        <!--ContentPanel - placez tout contenu supplémentaire ici-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ListBox Style="{StaticResource ResourceKey=lst}" Margin="28,30,0,0" Name="lstCollab" Height="282">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="10" Text="  "></TextBlock>
+                            <TextBlock Width="150" Text="{Binding Prenom}" Style="{StaticResource ResourceKey=txt}"></TextBlock>
+                            <TextBlock Width="200" Text="{Binding Nom}" Style="{StaticResource ResourceKey=txt}" ></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Style="{StaticResource ResourceKey=txt}" Height="30" Margin="12,-6,0,0" Name="textBlock2" Text="Collaborateurs" Foreground="#FF00CAF8"/>
+            <Button Content="Connexion" Height="72" HorizontalAlignment="Left" Margin="15,457,0,0" Name="cmdConnexion" VerticalAlignment="Top" Width="438" Foreground="#FF00CAF8" BorderBrush="#FF00CAF8" FontFamily="Calibri" Click="cmdConnexion_Click" />
+            <PasswordBox BorderBrush="#FF4B4B4B" Background="#FF4B4B4B" Width="438" Height="72" Margin="12,343,6,0" Name="pwb" VerticalAlignment="Top" />
+            <TextBlock Foreground="#FF00CAF8" Height="30" Margin="9,318,0,0" Name="textBlock1" Style="{StaticResource txt}" Text="Mot de passe" />
+            <HyperlinkButton Foreground="#FFFF8900" Content="Mot de passe oublié ?" FontSize="20" Height="30" HorizontalAlignment="Left" Margin="97,414,0,0" Name="cmdMdp" VerticalAlignment="Top" Width="259" Click="cmdMdp_Click" />
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>
